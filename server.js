@@ -2,11 +2,13 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const campsiteRouter = require('./routes/campsiteRouter');
+const promotionRouter = require('./routes/promotionRouter');
+const partnerRouter = require('./routes/partnerRouter');
 
 const hostname = 'localhost';
 const port = 3000;
 
-const app = express(); //Returns express server application
+const app = express(); //Returns express webserver application
 
 //Config morgan to log using development version
 app.use(morgan('dev'));
@@ -16,6 +18,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 app.use('/campsites', campsiteRouter);
+app.use('/promotions', promotionRouter);
+app.use('/partners', partnerRouter);
 
                     //Variable in node that refers to absolute path of current directory of file it's in.
 app.use(express.static(__dirname + '/public'));
